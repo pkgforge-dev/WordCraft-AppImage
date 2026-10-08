@@ -30,6 +30,8 @@ git clone https://github.com/storytold/wordcraft.git ./wordcraft && (
 	git checkout "$TAG"
 	echo "${TAG#v}" > ~/version
 
+	export CARGO_PROFILE_RELEASE_LTO=fat
+	export CARGO_PROFILE_RELEASE_PANIC=abort
 	cargo build --locked --release -p wordcraft -p wordcraft-cli
 
 	cp -v ./target/release/wordcraft ./target/release/wordcraft-cli /usr/bin
